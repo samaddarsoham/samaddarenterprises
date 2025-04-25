@@ -1,0 +1,294 @@
+.team-section {
+  background-color: var(--background-color);
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.team-intro {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-2xl);
+  text-align: center;
+}
+
+.team-intro p {
+  font-size: var(--font-size-lg);
+  color: var(--text-color-secondary);
+  line-height: 1.8;
+}
+
+.team-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-4xl);
+  margin-bottom: var(--spacing-2xl);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--spacing-xl);
+}
+
+.team-member {
+  background: transparent;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  width: 800px;
+  max-width: 100%;
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  margin: 0 auto;
+  gap: var(--spacing-xl);
+  box-sizing: border-box;
+}
+
+.team-member::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  border-radius: var(--border-radius-md);
+}
+
+.team-member::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  border-radius: var(--border-radius-md);
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.4s ease;
+  transform: scale(0.9);
+}
+
+.team-member:hover::before {
+  opacity: 1;
+}
+
+.team-member:hover::after {
+  opacity: 1;
+  transform: scale(1);
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+}
+
+.team-image-container {
+  width: 200px;
+  height: 200px;
+  min-width: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  border: 3px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 215, 0, 0.1);
+  transition: all 0.4s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 var(--spacing-md);
+}
+
+.team-member:hover .team-image-container {
+  transform: scale(1.05);
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.team-image-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.2), transparent 70%);
+  z-index: 1;
+  opacity: 0.7;
+  transition: opacity 0.4s ease;
+}
+
+.team-member:hover .team-image-container::before {
+  opacity: 1;
+}
+
+.team-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Specific adjustments for team members */
+.team-member:nth-child(1) .team-image {
+  filter: brightness(0.8); /* Darken Uttam's image more */
+  object-position: center; /* Center Uttam's image properly */
+}
+
+.team-member:nth-child(2) .team-image {
+  object-position: center; /* Center Soham's image properly */
+  transform: scale(1); /* Normal size, no zoom */
+}
+
+.team-member:nth-child(1):hover .team-image {
+  transform: scale(1.1);
+}
+
+.team-member:nth-child(2):hover .team-image {
+  transform: scale(1.1); /* Consistent hover effect */
+  object-position: center; /* Maintain the centered position on hover */
+}
+
+.team-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.team-name {
+  font-size: var(--font-size-xl);
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-xs);
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  padding-bottom: var(--spacing-sm);
+  transition: all 0.3s ease;
+}
+
+.team-name::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--gradient-yellow);
+  border-radius: var(--border-radius-full);
+  transition: width 0.3s ease;
+}
+
+.team-member:hover .team-name {
+  color: var(--primary-color);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.team-member:hover .team-name::after {
+  width: 60px;
+}
+
+.team-role {
+  font-size: var(--font-size-md);
+  color: var(--text-color-secondary);
+  margin-bottom: var(--spacing-md);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.team-member:hover .team-role {
+  color: var(--text-color);
+}
+
+.team-bio {
+  color: var(--text-color-secondary);
+  font-size: var(--font-size-md);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-lg);
+  max-width: 90%;
+  transition: all 0.3s ease;
+}
+
+.team-member:hover .team-bio {
+  color: var(--text-color);
+}
+
+.team-social {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 215, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+  }
+
+  .team-image-container {
+    width: 180px;
+    height: 180px;
+    min-width: 180px;
+    margin: var(--spacing-md) auto;
+  }
+
+  .team-member {
+    width: 90%;
+    max-width: 500px;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .team-content {
+    align-items: center;
+    margin-top: var(--spacing-lg);
+    width: 100%;
+  }
+
+  .team-name::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .team-bio {
+    max-width: 100%;
+  }
+}

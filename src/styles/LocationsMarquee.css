@@ -1,0 +1,91 @@
+.locations-marquee-container {
+  background-color: var(--background-color); /* Changed to match the background color */
+  overflow: visible; /* Changed from hidden to visible */
+  padding: var(--spacing-lg) 0;
+  position: relative;
+  border-top: 1px solid rgba(255, 215, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+  width: 100%;
+  z-index: 4; /* Lower than AboutSection */
+  margin-bottom: 0; /* Ensure no margin at the bottom */
+}
+
+.locations-marquee-container::before,
+.locations-marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 1;
+}
+
+.locations-marquee-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--background-color), transparent);
+}
+
+.locations-marquee-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--background-color), transparent);
+}
+
+.locations-marquee {
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+  width: 100%;
+}
+
+.locations-text {
+  display: inline-flex;
+  padding: 0 var(--spacing-md);
+  align-items: center;
+}
+
+.location-item {
+  color: var(--primary-color);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin: 0 var(--spacing-md);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  transition: var(--transition-normal);
+  position: relative;
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.location-item:hover {
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+  transform: scale(1.1);
+}
+
+.location-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
+  height: 2px;
+  background: var(--gradient-yellow);
+  transition: transform 0.3s ease;
+  border-radius: var(--border-radius-full);
+}
+
+.location-item:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.3);
+  margin: 0 var(--spacing-xs);
+}
+
+
+
+@media (max-width: 768px) {
+  .location-item {
+    font-size: var(--font-size-md);
+    margin: 0 var(--spacing-sm);
+  }
+}
