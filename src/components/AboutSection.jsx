@@ -13,11 +13,11 @@ const AboutSection = () => {
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
   const milestones = [
-    { year: '2010', title: 'Company Founded', description: 'SAMADDAR ENTERPRISES was established in Kolkata.', icon: '🏗️' },
-    { year: '2013', title: 'First Major Project', description: 'Completed our first ₹1 Cr+ government project.', icon: '🏢' },
-    { year: '2016', title: 'Expansion', description: 'Expanded services to include interior decoration and land development.', icon: '🏛️' },
-    { year: '2019', title: 'Major Milestone', description: 'Crossed ₹25 Cr in total project value.', icon: '💰' },
-    { year: '2022', title: 'Industry Recognition', description: 'Recognized as a leading contracting company in Eastern India.', icon: '🏆' }
+    { year: '2004', title: 'Company Founded', description: 'SAMADDAR ENTERPRISES was established in Kolkata.', icon: '🏗️' },
+    { year: '2008', title: 'First Major Project', description: 'Completed our first ₹1 Cr+ government project.', icon: '🏢' },
+    { year: '2012', title: 'Expansion', description: 'Expanded services to include interior decoration and land development.', icon: '🏛️' },
+    { year: '2016', title: 'Major Milestone', description: 'Crossed ₹25 Cr in total project value.', icon: '💰' },
+    { year: '2020', title: 'Industry Recognition', description: 'Recognized as a leading contracting company in Eastern India.', icon: '🏆' }
   ];
 
   useEffect(() => {

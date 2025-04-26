@@ -23,27 +23,52 @@ const Hero = () => {
 
   // Animation for the hero section - simplified to avoid issues
   useEffect(() => {
-    // Only animate the counters, no other animations to avoid content disappearing
-    counterRefs.current.forEach((counter, index) => {
-      const targetValue = parseInt(counter.getAttribute('data-target'));
+    // Check if the body has the 'loaded' class (preloader has finished)
+    const startAnimations = () => {
+      // Only animate the counters, no other animations to avoid content disappearing
+      counterRefs.current.forEach((counter, index) => {
+        const targetValue = parseInt(counter.getAttribute('data-target'));
 
-      // Set initial value
-      counter.innerHTML = "0";
+        // Set initial value
+        counter.innerHTML = "0";
 
-      // Simple counter animation
-      gsap.to({
-        value: 0
-      }, {
-        value: targetValue,
-        duration: 2,
-        delay: 0.5 + (index * 0.2),
-        ease: "power1.inOut",
-        onUpdate: function() {
-          const value = Math.round(this.targets()[0].value);
-          counter.innerHTML = value;
-        }
+        // Simple counter animation
+        gsap.to({
+          value: 0
+        }, {
+          value: targetValue,
+          duration: 2,
+          delay: 0.5 + (index * 0.2),
+          ease: "power1.inOut",
+          onUpdate: function() {
+            const value = Math.round(this.targets()[0].value);
+            counter.innerHTML = value;
+          }
+        });
       });
-    });
+    };
+
+    // If body already has 'loaded' class, start animations immediately
+    if (document.body.classList.contains('loaded')) {
+      startAnimations();
+    } else {
+      // Otherwise, wait for the 'loaded' class to be added
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.target.classList.contains('loaded')) {
+            startAnimations();
+            observer.disconnect();
+          }
+        });
+      });
+
+      observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+      // Cleanup function
+      return () => {
+        observer.disconnect();
+      };
+    }
 
     // Simple scroll parallax for background
     gsap.to(bgRef.current, {
@@ -96,7 +121,7 @@ const Hero = () => {
 
           <div className="stats-section" ref={statsRef}>
             <div className="experience-badge" ref={experienceRef}>
-              <div className="experience-years">15+</div>
+              <div className="experience-years">25+</div>
               <div className="experience-text">Years Experience</div>
             </div>
 
@@ -123,8 +148,8 @@ const Hero = () => {
               </div>
 
               <div className="achievement-item">
-                <div className="achievement-number">₹<span ref={el => counterRefs.current[3] = el} data-target="50">0</span> Cr+</div>
-                <div className="achievement-label">Government Projects</div>
+                <div className="achievement-number">₹ <span ref={el => counterRefs.current[3] = el} data-target="125">0</span> Crore+</div>
+                <div className="achievement-label">valued Projects</div>
               </div>
             </div>
           </div>

@@ -16,7 +16,7 @@ const TeamSection = () => {
       name: 'Uttam Kumar Samaddar',
       role: 'Builder and Contractor',
       image: uttamSamaddar,
-      bio: 'With over 15 years of experience in the construction industry, Uttam Kumar Samaddar leads our team with expertise in high-rise building construction and land development projects.'
+      bio: 'With over 25 years of experience in the construction industry, Uttam Kumar Samaddar leads our team with expertise in high-rise building construction and land development projects.'
     },
     {
       id: 2,

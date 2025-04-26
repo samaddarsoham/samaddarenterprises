@@ -103,7 +103,7 @@ const About = () => {
             >
               <h2>Our <span className="highlight">Story</span></h2>
               <p>
-                SAMADDAR ENTERPRISES was founded in 2010 with a vision to provide high-quality construction and interior services in Kolkata and surrounding areas. What started as a small contracting company has now grown into a trusted name in the industry with over ₹75 Cr worth of Government & Private projects completed.
+                SAMADDAR ENTERPRISES was founded in 2004 with a vision to provide high-quality construction and interior services in Kolkata and surrounding areas. What started as a small contracting company has now grown into a trusted name in the industry with over ₹75 Cr worth of Government & Private projects completed.
               </p>
               <p>
                 Our journey has been marked by a commitment to excellence, innovation, and client satisfaction. We have successfully completed numerous projects ranging from high-rise buildings to luxury interiors, each reflecting our dedication to quality and craftsmanship.
