@@ -7,8 +7,8 @@ const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef(null);
   const testimonialsRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
-  
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+
   const testimonials = [
     {
       id: 1,
@@ -44,18 +44,18 @@ const TestimonialsSection = () => {
     const interval = setInterval(() => {
       setActiveIndex(prevIndex => (prevIndex + 1) % testimonials.length);
     }, 5000);
-    
+
     return () => clearInterval(interval);
   }, [testimonials.length]);
-  
+
   useEffect(() => {
     if (isInView && testimonialsRef.current) {
       gsap.fromTo(
         '.testimonial-card',
         { opacity: 0, y: 50 },
-        { 
-          opacity: 1, 
-          y: 0, 
+        {
+          opacity: 1,
+          y: 0,
           stagger: 0.2,
           duration: 0.8,
           ease: 'power2.out'
@@ -71,7 +71,7 @@ const TestimonialsSection = () => {
   return (
     <section className="testimonials-section section" ref={sectionRef}>
       <div className="container">
-        <motion.h2 
+        <motion.h2
           className="section-title"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -79,7 +79,7 @@ const TestimonialsSection = () => {
         >
           Client <span className="highlight">Testimonials</span>
         </motion.h2>
-        
+
         <div className="testimonials-container" ref={testimonialsRef}>
           <div className="testimonials-wrapper" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
             {testimonials.map((testimonial, index) => (
@@ -104,18 +104,18 @@ const TestimonialsSection = () => {
               </div>
             ))}
           </div>
-          
+
           <div className="testimonial-dots">
             {testimonials.map((_, index) => (
-              <button 
-                key={index} 
+              <button
+                key={index}
                 className={`dot ${index === activeIndex ? 'active' : ''}`}
                 onClick={() => handleDotClick(index)}
               />
             ))}
           </div>
-          
-          <button 
+
+          <button
             className="testimonial-arrow prev"
             onClick={() => setActiveIndex(prevIndex => (prevIndex - 1 + testimonials.length) % testimonials.length)}
           >
@@ -123,8 +123,8 @@ const TestimonialsSection = () => {
               <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 010-1.06l7.5-7.5a.75.75 0 111.06 1.06L9.31 12l6.97 6.97a.75.75 0 11-1.06 1.06l-7.5-7.5z" clipRule="evenodd" />
             </svg>
           </button>
-          
-          <button 
+
+          <button
             className="testimonial-arrow next"
             onClick={() => setActiveIndex(prevIndex => (prevIndex + 1) % testimonials.length)}
           >

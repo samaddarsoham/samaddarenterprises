@@ -8,7 +8,7 @@ import sohamSamaddar from '../assets/images/SohamSamaddar.png';
 
 const TeamSection = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   const teamMembers = [
     {

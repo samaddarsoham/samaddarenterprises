@@ -262,7 +262,7 @@
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) and (min-width: 481px) {
   .navbar-container {
     justify-content: flex-end; /* Changed from space-between to flex-end since we removed the logo */
     padding: 0 var(--spacing-md);
@@ -293,23 +293,33 @@
 @media (max-width: 480px) {
   .navbar {
     padding: var(--spacing-xs) 0;
+    background-color: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.15);
   }
 
+  /* Show desktop links in mobile view */
+  .desktop-links {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: var(--spacing-md); /* Reduced gap */
+  }
+
+  .nav-link {
+    font-size: var(--font-size-xs); /* Smaller font size */
+    padding: var(--spacing-xs) var(--spacing-xs); /* Smaller padding */
+    letter-spacing: 1px; /* Reduced letter spacing */
+  }
+
+  /* Hide hamburger menu */
   .menu-toggle {
-    padding: var(--spacing-xs);
+    display: none;
   }
 
-  .hamburger {
-    width: 25px; /* Smaller hamburger menu */
-    height: 18px;
-  }
-
+  /* Keep mobile menu hidden */
   .mobile-menu {
-    width: 85%; /* Wider mobile menu */
-    padding: var(--spacing-2xl) var(--spacing-md);
-  }
-
-  .mobile-link {
-    font-size: var(--font-size-md); /* Smaller font size */
+    display: none;
   }
 }

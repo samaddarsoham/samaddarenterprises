@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const AboutSection = () => {
   const sectionRef = useRef(null);
   const timelineRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   const milestones = [
     { year: '2004', title: 'Company Founded', description: 'SAMADDAR ENTERPRISES was established in Kolkata.', icon: '🏗️' },
@@ -30,8 +30,8 @@ const AboutSection = () => {
         height: '100%',
         scrollTrigger: {
           trigger: timeline,
-          start: 'top 80%',
-          end: 'bottom 20%',
+          start: 'top 80%', // Start when 20% of the section is visible
+          end: 'bottom 50%',
           scrub: true
         }
       });
@@ -45,8 +45,8 @@ const AboutSection = () => {
             x: 0,
             scrollTrigger: {
               trigger: item,
-              start: 'top 80%',
-              toggleActions: 'play none none none'
+              start: 'top 85%', // Start when just 15% of the item is visible
+              toggleActions: 'play none none reverse'
             }
           }
         );

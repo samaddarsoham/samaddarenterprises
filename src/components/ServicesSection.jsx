@@ -11,7 +11,7 @@ import commercialBuilding from '../assets/images/CommercialBuilding.jpg';
 
 const ServicesSection = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   const services = [
     {

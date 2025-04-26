@@ -24,9 +24,9 @@ const Home = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: 'top 90%', // Trigger earlier
-          end: 'bottom 20%',
-          toggleActions: 'play none none none'
+          start: 'top 80%', // Trigger when 20% of the section is visible
+          end: 'top 50%',
+          toggleActions: 'play none none reverse'
         }
       });
 

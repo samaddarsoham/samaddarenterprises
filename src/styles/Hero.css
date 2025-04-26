@@ -751,54 +751,86 @@
   }
 
   .hero-container {
-    padding-top: 60px; /* Reduced top padding */
+    padding-top: 20px; /* Reduced top padding significantly */
+    justify-content: space-between; /* Distribute space better */
+  }
+
+  .hero-main-content {
+    height: 100%; /* Use full height */
+    padding-top: 0; /* Remove top padding */
+    justify-content: space-evenly; /* Distribute content evenly */
   }
 
   .hero-title-container {
     padding: 0.5rem;
-    margin-bottom: 1.5rem; /* Reduced margin */
+    margin-bottom: 2.5rem; /* Increased margin */
+    margin-top: 2rem; /* Added top margin */
   }
 
   .hero-title-samaddar {
-    font-size: clamp(2.5rem, 9vw, 4rem); /* Smaller font size */
-    letter-spacing: 4px; /* Further reduced letter spacing */
+    font-size: clamp(2.8rem, 10vw, 4rem); /* Slightly larger font size */
+    letter-spacing: 4px;
   }
 
   .hero-title-enterprises {
-    font-size: clamp(0.9rem, 3.5vw, 1.2rem); /* Smaller font size */
-    letter-spacing: 4px; /* Further reduced letter spacing */
+    font-size: clamp(1rem, 4vw, 1.4rem); /* Slightly larger font size */
+    letter-spacing: 4px;
   }
 
   .hero-tagline-container {
     padding: 0;
-    margin-bottom: 1rem; /* Reduced margin */
+    margin-bottom: 1.5rem; /* Increased margin */
+    margin-top: 2rem; /* Added top margin */
   }
 
   .hero-tagline {
-    font-size: clamp(1rem, 4.5vw, 1.4rem); /* Smaller font size */
-    letter-spacing: 1px; /* Further reduced letter spacing */
+    font-size: clamp(1.2rem, 5vw, 1.6rem); /* Slightly larger font size */
+    letter-spacing: 1px;
   }
 
   .hero-buttons {
-    flex-direction: column; /* Stack buttons on mobile */
-    margin-bottom: 1.5rem; /* Reduced margin */
-    gap: 0.8rem; /* Reduced gap */
+    flex-direction: row; /* Keep buttons side by side on mobile */
+    margin-bottom: 3rem; /* Increased margin */
+    margin-top: 1rem; /* Added top margin */
+    gap: 1rem; /* Increased gap */
+    justify-content: center;
   }
 
   .hero-buttons .btn {
-    width: 100%;
-    max-width: 250px;
-    padding: 0.7rem 1.5rem; /* Smaller padding */
-    font-size: 0.8rem; /* Smaller font size */
-    min-width: unset;
+    width: auto;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    min-width: 130px; /* Set minimum width */
+  }
+
+  .stats-section {
+    margin-top: 2rem; /* Added top margin */
   }
 
   .achievements {
-    grid-template-columns: repeat(2, 1fr); /* Keep 2 columns on mobile */
-    gap: 0.8rem; /* Reduced gap */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem; /* Increased gap */
     max-width: 100%;
     padding: 0 1rem;
-    margin-bottom: 1rem; /* Reduced bottom margin */
+    margin-bottom: 2rem; /* Increased bottom margin */
+    margin-top: 2rem; /* Added top margin */
+  }
+
+  .achievement-item {
+    min-height: 120px; /* Set minimum height */
+    padding: 1.2rem 0.8rem; /* Adjusted padding */
+    background: rgba(0, 0, 0, 0.5); /* Slightly darker background */
+    border: 1px solid rgba(255, 215, 0, 0.2); /* Add subtle border */
+  }
+
+  .achievement-number {
+    font-size: 2.2rem; /* Larger font size */
+    margin-bottom: 0.8rem;
+  }
+
+  .achievement-label {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
   }
 
   /* Ensure stats section is properly spaced */
