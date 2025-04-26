@@ -31,6 +31,37 @@ body {
   /* Prevent scrollbar flashing */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* App container for forcing remount */
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  position: relative;
+  z-index: 1;
+}
+
+/* Site wrapper to ensure content visibility */
+.site-wrapper {
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure main content takes available space */
+main {
+  flex: 1;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -392,6 +423,27 @@ img {
   .section::before {
     background-size: 60px 60px;
   }
+
+  /* Mobile-specific fixes for scrolling */
+  html, body {
+    height: auto !important;
+    min-height: 100vh;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Ensure content is visible */
+  .site-wrapper, main, .app-container {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Fix for black screen on reload */
+  body.loaded {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -410,5 +462,35 @@ img {
   /* Adjust grid size for mobile */
   .section::before {
     background-size: 40px 40px;
+  }
+
+  /* Additional mobile fixes for small screens */
+  html, body {
+    height: auto !important;
+    min-height: 100vh;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+  }
+
+  /* Force content visibility */
+  body * {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Fix for black screen on reload */
+  body {
+    background-color: #050505 !important;
+    color: #ffffff !important;
+  }
+
+  /* Ensure app container is visible */
+  .app-container {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 100vh;
+    background-color: var(--background-color) !important;
   }
 }

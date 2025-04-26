@@ -12,6 +12,34 @@ import './styles/global.css';
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [key, setKey] = useState(Date.now()); // Key for forcing remount
+
+  // Handle reload detection
+  useEffect(() => {
+    // Detect if this is a page reload
+    const isReload = window.performance &&
+      window.performance.navigation &&
+      window.performance.navigation.type === 1;
+
+    // Handle mobile detection
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    // If this is a reload on mobile, force a complete restart
+    if (isReload && isMobile) {
+      // Force remount of the entire app by changing the key
+      setKey(Date.now());
+
+      // Reset loading state to show preloader again
+      setLoading(true);
+
+      // Remove loaded class to restart properly
+      document.body.classList.remove('loaded');
+
+      // Set background color to prevent black screen during transition
+      document.body.style.backgroundColor = '#050505';
+      document.body.style.color = '#ffffff';
+    }
+  }, []);
 
   useEffect(() => {
     // Set page title
@@ -26,16 +54,29 @@ function App() {
     // Prevent FOUC (Flash of Unstyled Content)
     document.documentElement.classList.add('js-loading');
 
+    // Ensure scrolling works
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
+
     // Remove loading class after everything is loaded
     window.addEventListener('load', () => {
-      // Keep the preloader visible until it completes
       document.documentElement.classList.remove('js-loading');
     });
 
+    // Safety timeout to ensure preloader doesn't get stuck
+    const safetyTimeout = setTimeout(() => {
+      if (loading) {
+        handleLoadComplete();
+      }
+    }, 5000); // 5 second safety timeout
+
     return () => {
-      document.head.removeChild(link);
+      clearTimeout(safetyTimeout);
+      if (link.parentNode) {
+        document.head.removeChild(link);
+      }
     };
-  }, []);
+  }, [loading, key]);
 
   const handleLoadComplete = () => {
     setLoading(false);
@@ -43,7 +84,7 @@ function App() {
   };
 
   return (
-    <>
+    <div key={key} className="app-container">
       {loading && <Preloader onLoadComplete={handleLoadComplete} />}
       <Router>
         <Layout>
@@ -57,7 +98,7 @@ function App() {
           </Routes>
         </Layout>
       </Router>
-    </>
+    </div>
   );
 }
 
